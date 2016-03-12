@@ -64,6 +64,12 @@ void loop()
    // 3.44/1023 = Volts per bit = 0.003363075
    float batteryV  = sensorValue * 0.003363075;
    int batteryPcnt = sensorValue / 10;
+   
+   //Some code I needed to get this to work with my battery set up
+   //I'll leave it commented for others to approve
+   // If voltage is 3.4 the batteryPcnt variable gives a result of 102% and Vera UI7 does render any battery symbol
+   //To fix it I added the bit below
+   // if (batteryPcnt > 100) {batteryPcnt = 100} else {batteryPcnt = batteryPcnt};
 
    #ifdef DEBUG
    Serial.print("Battery Voltage: ");
